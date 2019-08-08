@@ -23,8 +23,7 @@ function App() {
   }, []);
   return (
     <div className="app">
-      {/* <Header /> */}
-      <div className="header" />
+      <Header />
       <SidebarLayout>
         <aside>
           <Sidebar />
