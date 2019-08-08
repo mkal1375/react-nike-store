@@ -3,7 +3,7 @@
 	<!ENTITY ns_svg "http://www.w3.org/2000/svg">
 	<!ENTITY ns_xlink "http://www.w3.org/1999/xlink">
 ]>
-<svg  version="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="200" height="72"
+<svg  version="1.1" xmlns:svg="http://www.w3.org/2000/svg" xmlns="&ns_svg;" xmlns:xlink="&ns_xlink;" width="200" height="30"
 	 viewBox="135.5 361.375 200 72" overflow="visible" enable-background="new 135.5 361.375 200 72" xml:space="preserve">
 <path d="M159.23,431.966c-5.84-0.232-10.618-1.83-14.354-4.798c-0.713-0.567-2.412-2.267-2.982-2.984
 	c-1.515-1.905-2.545-3.759-3.232-5.816c-2.114-6.332-1.026-14.641,3.112-23.76c3.543-7.807,9.01-15.55,18.548-26.274

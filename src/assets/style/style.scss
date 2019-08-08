@@ -1,10 +1,122 @@
-@font-face {
-  font-family: "nike";
-  src: url("../fonts/Trade\ Gothic\ LT.ttf") format("ttf");
+$primary-color: black;
+$accent-color: #f2134f;
+$gray-color: #acacac;
+$font: "TradeGothic LT";
+$fontB: "TradeGothic LT Bold";
+
+// resets
+html {
+  scroll-behavior: smooth;
+}
+body {
+  margin: 0;
+  padding: 0;
+  border: none;
+  *,
+  *:before,
+  *:after {
+    box-sizing: border-box;
+  }
 }
 
-@font-face {
-  font-family: "nikeB";
-  src: url("../fonts/Trade\ Gothic\ LT\ Bold.ttf") format("ttf");
+// layouts
+
+.app {
+  max-width: 1440px;
+  margin: 0 auto;
+  height: 100vh;
 }
 
+.inner-wrapper {
+  padding-right: 3em !important;
+  padding-left: 3em !important;
+  font-family: $font;
+}
+
+.sidebar-layout {
+  width: 100%;
+  margin-top: 120px;
+  display: flex;
+  & > aside {
+    width: 20%;
+  }
+  & > main {
+    width: 80%;
+  }
+}
+
+// components
+.icon {
+  stroke-width: 1.5px;
+  transform: scale(1.2);
+}
+
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  padding: 2.5em 0;
+  display: flex;
+  justify-content: space-between;
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 82%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  &__options {
+    svg {
+      stroke: $primary-color;
+      margin: 0 0.5em;
+    }
+  }
+  .logo {
+    fill: $primary-color;
+    width: 70px;
+  }
+}
+
+.sidebar {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  flex-direction: column;
+}
+.sidebar__hero {
+}
+.sidebar__hero_item {
+  font-size: 2.5em;
+  font-family: $fontB;
+}
+.sidebar__hero_item:first-child {
+  color: $accent-color;
+}
+.sidebar__options {
+  margin-top: 3em;
+}
+.sidebar__option {
+  margin-bottom: 1.5em;
+}
+.sidebar__option_title {
+  margin-bottom: 0.5em;
+  color: $gray-color;
+  font-family: $fontB;
+}
+.sidebar__option_item {
+  font-size: 1.6em;
+}
+
+.product-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product-grid__product {
+  width: 200px;
+  height: 200px;
+  margin: 0.8em;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border-radius: 10px;
+}

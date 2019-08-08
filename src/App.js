@@ -1,14 +1,38 @@
-import React from "react";
-
-import Clock from "./assets/feather/clock.svg";
-
+// React
+import React, { useState, useEffect } from "react";
+// components
 import Header from "./components/Header";
+import SidebarLayout from "./components/SidebarLayout";
+import Sidebar from "./components/Sidebar";
+import ProductGrid from "./components/ProductGrid";
+// Third-Party
+import axios from "axios";
+// styles
+import "./assets/style/style.scss";
 
 function App() {
+  const [products, setProducts] = useState([]);
+  const [dataFetched, setDataFetched] = useState(false);
+  useEffect(() => {
+    axios
+      .get("https://json-server-now.mkal1375.now.sh/products")
+      .then(({ data }) => {
+        setDataFetched(true);
+        setProducts(data.shoes);
+      });
+  }, []);
   return (
     <div className="app">
-      <Header />
-      <Clock />
+      {/* <Header /> */}
+      <div className="header" />
+      <SidebarLayout>
+        <aside>
+          <Sidebar />
+        </aside>
+        <main>
+          <ProductGrid products={products} />
+        </main>
+      </SidebarLayout>
     </div>
   );
 }
