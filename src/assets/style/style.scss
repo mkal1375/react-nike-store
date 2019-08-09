@@ -21,11 +21,21 @@ body {
 
 // layouts
 
+#fuckingStupidRouterDiv {
+  flex-grow: 1;
+}
+
 .app {
   max-width: 1440px;
   margin: 0 auto;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
+
+// .page {
+//   margin-top: 120px;
+// }
 
 .inner-wrapper {
   padding-right: 3em !important;
@@ -35,7 +45,6 @@ body {
 
 .sidebar-layout {
   width: 100%;
-  margin-top: 120px;
   display: flex;
   & > aside {
     width: 20%;
@@ -46,6 +55,7 @@ body {
 }
 
 // components
+
 .icon {
   stroke-width: 1.5px;
   transform: scale(1.2);
@@ -53,8 +63,8 @@ body {
 
 .header {
   width: 100%;
-  position: fixed;
-  top: 0;
+  // position: fixed;
+  // top: 0;
   padding: 2.5em 0;
   display: flex;
   justify-content: space-between;
@@ -79,7 +89,7 @@ body {
 
 .sidebar {
   display: flex;
-  width: 100%;
+  width: 20%;
   position: fixed;
   flex-direction: column;
 }
@@ -119,4 +129,92 @@ body {
   justify-content: center;
   align-content: center;
   border-radius: 10px;
+}
+
+// product page:
+.product {
+  display: flex;
+  height: 100%;
+  & > div {
+    width: 50%;
+  }
+}
+
+.product__slider {
+}
+.product__slide {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px 10px 0 0;
+}
+.product__content {
+  padding: 0 2em;
+}
+.product__info {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.1em;
+}
+.product__type {
+}
+.product__price {
+  font-family: $fontB;
+  color: $accent-color;
+}
+.product__title {
+  font-size: 2em;
+  font-family: $fontB;
+}
+.product__description {
+  font-size: 1.2em;
+  margin-top: 1.5em;
+}
+.product__select_size {
+  margin-top: 1.5em;
+}
+.product__size_title {
+  font-family: $fontB;
+  color: $gray-color;
+}
+.product__sizes {
+  display: flex;
+  flex-wrap: wrap;
+}
+.product__size {
+  &-selected {
+    background-color: $accent-color;
+    border-color: $accent-color;
+    color: white;
+  }
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $gray-color;
+  color: $primary-color;
+  width: 23.5%;
+  margin: 1%;
+  padding: 0.5em;
+  border-radius: 8px;
+  &:nth-child(4n + 1) {
+    margin-left: 0;
+  }
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
+}
+.add-to-cart {
+  border: 2px solid $primary-color;
+  cursor: pointer;
+  color: $primary-color;
+  border-radius: 10px;
+  width: 100%;
+  padding: 0.5em;
+  font-size: 1.5em;
+  margin-top: 1em;
+
+  &:hover {
+    background-color: $primary-color;
+    color: white;
+  }
 }
