@@ -12,8 +12,11 @@ import "./assets/style/style.scss";
 
 function App() {
   const [products, setProducts] = useState([]);
-  // const [dataFetched, setDataFetched] = useState(false);
+  const [order, setOrder] = useState({});
+
   useEffect(() => {
+    // fetch products from server and load order from local storage.
+    // this effect execute only once at beginning.
     axios
       .get("https://json-server-now.mkal1375.now.sh/products")
       .then(({ data }) => {
@@ -21,7 +24,13 @@ function App() {
         setProducts(data.shoes);
         console.log("in");
       });
+    setOrder(JSON.parse(localStorage.getItem("order")));
   }, []);
+
+  useEffect(() => {
+    // write order to locals storage on change
+    localStorage.setItem("order", JSON.stringify(order));
+  }, [order]);
   return (
     <div className="app">
       <Header />
