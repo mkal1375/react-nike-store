@@ -23,7 +23,6 @@ function App() {
       .then(({ data }) => {
         // setDataFetched(true);
         setProducts(data.shoes);
-        console.log("in");
       });
     setOrder(JSON.parse(localStorage.getItem("order")));
   }, []);

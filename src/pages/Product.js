@@ -1,21 +1,24 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 
 const Product = props => {
-  const productSlide = React.createRef();
+  const [selectedSize, setSelectedSize] = useState(null);
   const product = props.products.find(
     item => item.id === Number(props.productId)
   );
-  useEffect(() => {
-    const firstImage = product && product.images[0];
-    productSlide.current.style.background = `url(${firstImage}) no-repeat center`;
-    productSlide.current.style.backgroundSize = "cover";
-
-    console.log(product);
-  }, [product, productSlide]);
+  const handleSizeSelect = event => {
+    const newSize = event.target.childNodes[0].nodeValue;
+    setSelectedSize(newSize);
+  };
   return (
     <div className="product page inner-wrapper">
       <div className="product__slider">
-        <div className="product__slide" ref={productSlide} />
+        <div
+          className="product__slide"
+          style={{
+            background: `white url(${product &&
+              product.images[0]}) no-repeat center / cover`
+          }}
+        />
       </div>
       <div className="product__content">
         <div className="product__info">
@@ -30,11 +33,19 @@ const Product = props => {
         </div>
         <div className="product__select_size">
           <div className="product__size_title">Select Size</div>
-          <div className="product__sizes">
+          <div className="product__sizes" onClick={handleSizeSelect}>
             {product &&
-              product.sizes.map(size => (
-                <div className="product__size">{size}</div>
-              ))}
+              product.sizes.map(size => {
+                const _className =
+                  Number(selectedSize) === size
+                    ? "product__size product__size-selected"
+                    : "product__size";
+                return (
+                  <div className={_className} key={size}>
+                    {size}
+                  </div>
+                );
+              })}
           </div>
         </div>
         <button className="add-to-cart">Add To Cart</button>
