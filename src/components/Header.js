@@ -6,7 +6,7 @@ import Logo from "../assets/logo.svg";
 import SearchIcon from "../assets/feather/search.svg";
 import ShoppingBagIcon from "../assets/feather/shopping-bag.svg";
 
-const Header = () => {
+const Header = props => {
   return (
     <header className="header inner-wrapper">
       <Link to="/">
@@ -14,7 +14,9 @@ const Header = () => {
       </Link>
       <div className="header__options">
         <SearchIcon className="icon" />
-        <ShoppingBagIcon className="icon" />
+        <Link to="checkout" onClick={props.fillOrderWithFakeData}>
+          <ShoppingBagIcon className="icon" />
+        </Link>
       </div>
     </header>
   );

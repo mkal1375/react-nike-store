@@ -7,7 +7,7 @@ import ProductGrid from "../components/ProductGrid";
 const Home = props => {
   return (
     <div className="page">
-      <SidebarLayout>
+      <SidebarLayout config={{ size: 20, dir: "rtl" }}>
         <aside>
           <Sidebar />
         </aside>

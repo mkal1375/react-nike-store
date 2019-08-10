@@ -6,11 +6,6 @@ const Product = props => {
     item => item.id === Number(props.productId)
   );
   useEffect(() => {
-    // product &&
-    //   product.images.forEach(image => {
-    //     productSlide.current.style.background = `url(${image}) no-repeat center`;
-    //     productSlide.current.style.backgroundSize = "cover";
-    //   });
     const firstImage = product && product.images[0];
     productSlide.current.style.background = `url(${firstImage}) no-repeat center`;
     productSlide.current.style.backgroundSize = "cover";
@@ -20,16 +15,6 @@ const Product = props => {
   return (
     <div className="product page inner-wrapper">
       <div className="product__slider">
-        {/* {product &&
-          product.images.map(image => {
-            return (
-              <div
-                key={product.id}
-                ref={productSlide}
-                className="product__slide"
-              />
-            );
-          })} */}
         <div className="product__slide" ref={productSlide} />
       </div>
       <div className="product__content">

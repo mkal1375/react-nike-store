@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Header from "./components/Header";
 import Home from "./pages/Home";
 import Product from "./pages/Product";
+import Checkout from "./pages/Checkout";
 // Third-Party
 import axios from "axios";
 import { Router } from "@reach/router";
@@ -31,12 +32,32 @@ function App() {
     // write order to locals storage on change
     localStorage.setItem("order", JSON.stringify(order));
   }, [order]);
+
+  const fillOrderWithFakeData = () => {
+    setOrder({
+      4: {
+        12: 2
+      },
+      2: {
+        7: 1,
+        12: 1
+      },
+      3: {
+        7: 1
+      },
+      6: {
+        7: 1,
+        12: 1
+      }
+    });
+  };
   return (
     <div className="app">
-      <Header />
+      <Header fillOrderWithFakeData={fillOrderWithFakeData} />
       <Router id="fuckingStupidRouterDiv">
         <Home path="/" products={products} />
         <Product path="/products/:productId" products={products} />
+        <Checkout path="/checkout" order={order} products={products} />
       </Router>
     </div>
   );
