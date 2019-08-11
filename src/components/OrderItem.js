@@ -37,7 +37,9 @@ const OrderItem = props => {
         decreaseOrderItemQuantity={props.decreaseOrderItemQuantity}
         changeOrderItemQuantity={props.changeOrderItemQuantity}
       />
-      <div className="order__item_price">{product && product.price}$</div>
+      <div className="order__item_price">
+        {product && product.price * quantity}$
+      </div>
       <X
         className="order__item_delete"
         onClick={() => props.removeFromOrder(product && product.id, size)}

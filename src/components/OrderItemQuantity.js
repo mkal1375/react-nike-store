@@ -4,18 +4,23 @@ import RightArrow from "../assets/feather/chevron-right.svg";
 import LeftArrow from "../assets/feather/chevron-left.svg";
 
 const OrderItemQuantity = props => {
-  const [itemQuantity, setItemQuantity] = useState(props.quantity);
+  // this state maybe will be useful when we want expend this form features.
+  const [itemQuantity, setItemQuantity] = useState(Number(props.quantity));
   const changeQuantity = event => {
-    setItemQuantity(event.target.value);
+    const input = event.target.value;
+    if (input > 0) setItemQuantity(Number(input));
   };
   return (
     <div className="order__item_quantity">
       <button className="invisible">
         <LeftArrow
           className="order__item_quantity_arrow"
-          onClick={() =>
-            props.decreaseOrderItemQuantity(props.productId, props.size)
-          }
+          onClick={() => {
+            if (itemQuantity - 1 > 0) {
+              setItemQuantity(itemQuantity - 1);
+              props.decreaseOrderItemQuantity(props.productId, props.size);
+            }
+          }}
         />
       </button>
       <input
@@ -34,9 +39,10 @@ const OrderItemQuantity = props => {
       <button className="invisible">
         <RightArrow
           className="order__item_quantity_arrow"
-          onClick={() =>
-            props.increaseOrderItemQuantity(props.productId, props.size)
-          }
+          onClick={() => {
+            setItemQuantity(itemQuantity + 1);
+            props.increaseOrderItemQuantity(props.productId, props.size);
+          }}
         />
       </button>
     </div>

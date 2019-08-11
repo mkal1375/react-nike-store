@@ -249,6 +249,7 @@ body {
   width: 100%;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   padding: 1em;
   border-bottom: 1px solid $gray-color;
   &:last-child {
@@ -262,7 +263,7 @@ body {
   border-radius: $curve;
 }
 .order__item_info {
-  margin-right: auto;
+  flex-grow: 1;
   padding: 0 2em;
   div {
     display: flex;
@@ -271,7 +272,7 @@ body {
 }
 .order__item_title {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   font-family: $fontB;
   font-size: 1.5em;
 }
@@ -306,6 +307,7 @@ body {
   font-size: 1.5em;
 }
 .order__item_delete {
+  cursor: pointer;
   margin-left: 1em;
   stroke: $gray-color;
 }

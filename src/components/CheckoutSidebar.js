@@ -1,11 +1,11 @@
 import React from "react";
 
-const CheckoutSidebar = () => {
+const CheckoutSidebar = props => {
   return (
     <div className="sidebar" style={{ paddingLeft: "1.5em" }}>
       <div className="sidebar__option_title">Total:</div>
       <div className="sidebar__hero">
-        <div className="sidebar__hero_item">1200$</div>
+        <div className="sidebar__hero_item">{props.total}$</div>
       </div>
       <div className="sidebar__options" style={{ marginTop: "1em" }}>
         <div className="sidebar__option">

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
 import SidebarLayout from "../components/SidebarLayout";
 
@@ -12,12 +12,24 @@ const orderToArray = order => {
 };
 
 const Checkout = props => {
+  const [total, setTotal] = useState(0);
   const order = props.order;
+  useEffect(() => {
+    const _total = orderToArray(order).reduce((prev, [productId, size]) => {
+      let productQuantity = order[productId][size];
+      let product = props.products.find(
+        product => product.id === Number(productId)
+      );
+      const orderItemSum = productQuantity * Number(product && product.price);
+      return prev + orderItemSum;
+    }, 0);
+    setTotal(_total);
+  }, [order, props.products]);
   return (
     <div className="checkout page inner-wrapper">
       <SidebarLayout config={{ size: 20, dir: "ltr" }}>
         <aside>
-          <CheckoutSidebar />
+          <CheckoutSidebar total={total} />
         </aside>
         <main>
           <div className="checkout__order">
