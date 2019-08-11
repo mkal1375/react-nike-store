@@ -29,9 +29,19 @@ const OrderItem = props => {
           {product && product.age.toUpperCase()} | {product && product.type}
         </div>
       </div>
-      <OrderItemQuantity quantity={quantity} />
+      <OrderItemQuantity
+        quantity={quantity}
+        productId={product && product.id}
+        size={product && size}
+        increaseOrderItemQuantity={props.increaseOrderItemQuantity}
+        decreaseOrderItemQuantity={props.decreaseOrderItemQuantity}
+        changeOrderItemQuantity={props.changeOrderItemQuantity}
+      />
       <div className="order__item_price">{product && product.price}$</div>
-      <X className="order__item_delete" />
+      <X
+        className="order__item_delete"
+        onClick={() => props.removeFromOrder(product && product.id, size)}
+      />
     </div>
   );
 };

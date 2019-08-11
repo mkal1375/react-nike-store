@@ -28,6 +28,10 @@ const Checkout = props => {
               );
               return (
                 <OrderItem
+                  increaseOrderItemQuantity={props.increaseOrderItemQuantity}
+                  decreaseOrderItemQuantity={props.decreaseOrderItemQuantity}
+                  changeOrderItemQuantity={props.changeOrderItemQuantity}
+                  removeFromOrder={props.removeFromOrder}
                   key={`${productId}/${size}`}
                   product={product}
                   size={size}

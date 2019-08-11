@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import RightArrow from "../assets/feather/chevron-right.svg";
 import LeftArrow from "../assets/feather/chevron-left.svg";

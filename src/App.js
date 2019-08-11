@@ -43,6 +43,36 @@ function App() {
     setOrder(newOrder);
   };
 
+  const increaseOrderItemQuantity = (id, size) => {
+    const newOrder = { ...order };
+    const currentQuantity = order[id][size];
+    newOrder[id][size] = currentQuantity + 1;
+    setOrder(newOrder);
+  };
+
+  const decreaseOrderItemQuantity = (id, size) => {
+    const newOrder = { ...order };
+    const currentQuantity = order[id][size];
+    if (currentQuantity - 1 > 0) {
+      newOrder[id][size] = currentQuantity - 1;
+      setOrder(newOrder);
+    }
+  };
+
+  const changeOrderItemQuantity = (id, size, value) => {
+    const newOrder = { ...order };
+    if (value > 0) {
+      newOrder[id][size] = value;
+      setOrder(newOrder);
+    }
+  };
+
+  const removeFromOrder = (id, size) => {
+    const newOrder = { ...order };
+    delete newOrder[id][size];
+    setOrder(newOrder);
+  };
+
   // const fillOrderWithFakeData = () => {
   //   setOrder({
   //     4: {
@@ -71,7 +101,15 @@ function App() {
           path="/products/:productId"
           products={products}
         />
-        <Checkout path="/checkout" order={order} products={products} />
+        <Checkout
+          path="/checkout"
+          order={order}
+          products={products}
+          increaseOrderItemQuantity={increaseOrderItemQuantity}
+          decreaseOrderItemQuantity={decreaseOrderItemQuantity}
+          changeOrderItemQuantity={changeOrderItemQuantity}
+          removeFromOrder={removeFromOrder}
+        />
       </Router>
     </div>
   );
