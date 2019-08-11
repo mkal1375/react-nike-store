@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Slider from "../components/Slider";
 
 const Product = props => {
   const [selectedSize, setSelectedSize] = useState(null);
@@ -11,15 +12,7 @@ const Product = props => {
   };
   return (
     <div className="product page inner-wrapper">
-      <div className="product__slider">
-        <div
-          className="product__slide"
-          style={{
-            background: `white url(${product &&
-              product.images[0]}) no-repeat center / cover`
-          }}
-        />
-      </div>
+      <Slider product={product} />
       <div className="product__content">
         <div className="product__info">
           <div className="product__type">
