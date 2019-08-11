@@ -48,7 +48,14 @@ const Product = props => {
               })}
           </div>
         </div>
-        <button className="add-to-cart">Add To Cart</button>
+        <button
+          className="add-to-cart"
+          onClick={() => {
+            props.addToOrder(product.id, selectedSize);
+          }}
+        >
+          Add To Cart
+        </button>
       </div>
     </div>
   );

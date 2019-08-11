@@ -32,30 +32,45 @@ function App() {
     localStorage.setItem("order", JSON.stringify(order));
   }, [order]);
 
-  const fillOrderWithFakeData = () => {
-    setOrder({
-      4: {
-        12: 2
-      },
-      2: {
-        7: 1,
-        12: 1
-      },
-      3: {
-        7: 1
-      },
-      6: {
-        7: 1,
-        12: 1
-      }
-    });
+  const addToOrder = (id, size) => {
+    const newOrder = { ...order };
+    if (id in newOrder) {
+      const currentQuantity = order[id][size] || 0;
+      newOrder[id][size] = currentQuantity + 1;
+    } else {
+      newOrder[id] = { [size]: 1 };
+    }
+    setOrder(newOrder);
   };
+
+  // const fillOrderWithFakeData = () => {
+  //   setOrder({
+  //     4: {
+  //       12: 2
+  //     },
+  //     2: {
+  //       7: 1,
+  //       12: 1
+  //     },
+  //     3: {
+  //       7: 1
+  //     },
+  //     6: {
+  //       7: 1,
+  //       12: 1
+  //     }
+  //   });
+  // };
   return (
     <div className="app">
-      <Header fillOrderWithFakeData={fillOrderWithFakeData} />
+      <Header />
       <Router id="fuckingStupidRouterDiv">
         <Home path="/" products={products} />
-        <Product path="/products/:productId" products={products} />
+        <Product
+          addToOrder={addToOrder}
+          path="/products/:productId"
+          products={products}
+        />
         <Checkout path="/checkout" order={order} products={products} />
       </Router>
     </div>

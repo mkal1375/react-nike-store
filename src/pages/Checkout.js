@@ -26,9 +26,9 @@ const Checkout = props => {
               const product = props.products.find(
                 item => item.id === productId
               );
-              console.log(product);
               return (
                 <OrderItem
+                  key={`${productId}/${size}`}
                   product={product}
                   size={size}
                   quantity={order[productId][size]}

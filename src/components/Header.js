@@ -14,7 +14,7 @@ const Header = props => {
       </Link>
       <div className="header__options">
         <SearchIcon className="icon" />
-        <Link to="checkout" onClick={props.fillOrderWithFakeData}>
+        <Link to="checkout">
           <ShoppingBagIcon className="icon" />
         </Link>
       </div>
