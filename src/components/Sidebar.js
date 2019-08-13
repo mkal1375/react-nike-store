@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <div className="sidebar">
       <div className="sidebar__hero">
-        <div className="sidebar__hero_item">MEN</div>
+        <div className="sidebar__hero_item active">MEN</div>
         <div className="sidebar__hero_item">WOMEN</div>
         <div className="sidebar__hero_item">KIDS</div>
       </div>

@@ -20,6 +20,14 @@ body {
   }
 }
 
+button {
+  outline: none;
+  &:active,
+  &:focus {
+    outline: none;
+  }
+}
+
 // helper classes
 .invisible {
   background-attachment: transparent;
@@ -41,6 +49,37 @@ body {
   &::-webkit-outer-spin-button {
     appearance: none;
   }
+}
+
+.dialogue_box {
+  position: absolute;
+  bottom: 2em;
+  left: 2em;
+  width: 300px;
+  background-color: white;
+  border: 1px solid $gray-color;
+  border-radius: $curve;
+  display: flex;
+}
+.dialogue_box__content {
+  padding: 1em;
+  display: flex;
+  align-items: center;
+  flex-grow: 1;
+  font-family: $font;
+}
+.dialogue_box__icon {
+  margin-right: 0.5em;
+}
+.dialogue_box__message {
+  flex-grow: 1;
+}
+.dialogue_box__button {
+  border: none;
+  border-radius: 0 $curve $curve 0;
+  background-color: $accent-color;
+  color: white;
+  padding: 0 1em;
 }
 
 // layouts
@@ -111,20 +150,37 @@ body {
   position: fixed;
   flex-direction: column;
 }
+
+.order_submitted {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background-color: white;
+  margin-left: 1.5em;
+  border-radius: $curve;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .sidebar__hero {
 }
 .sidebar__hero_item {
   font-size: 2.5em;
   font-family: $fontB;
-}
-.sidebar__hero_item:first-of-type {
-  color: $accent-color;
+  &.active {
+    color: $accent-color;
+  }
 }
 .sidebar__options {
   margin-top: 3em;
 }
 .sidebar__option {
   margin-bottom: 1.5em;
+  padding: 0 0.2em;
 }
 .sidebar__option_title {
   margin-bottom: 0.5em;
@@ -137,6 +193,7 @@ body {
 
 .sidebar__option_item-small {
   font-size: 1.2em;
+  font-family: $font;
   @at-root textarea#{&} {
     height: 100px;
     resize: none;
@@ -341,5 +398,16 @@ body {
   cursor: pointer;
   &.small {
     transform: scale(0.8);
+  }
+}
+
+.empty_cart {
+}
+.empty_cart__link {
+  color: $gray-color;
+  font-family: $fontB;
+  font-size: 1.2em;
+  &:visited {
+    color: $gray-color;
   }
 }

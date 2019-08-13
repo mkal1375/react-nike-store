@@ -70,7 +70,12 @@ function App() {
   const removeFromOrder = (id, size) => {
     const newOrder = { ...order };
     delete newOrder[id][size];
+    if (Object.entries(newOrder[id]).length === 0) delete newOrder[id];
     setOrder(newOrder);
+  };
+
+  const cleanOrder = () => {
+    setOrder({});
   };
 
   // const fillOrderWithFakeData = () => {
@@ -109,6 +114,7 @@ function App() {
           decreaseOrderItemQuantity={decreaseOrderItemQuantity}
           changeOrderItemQuantity={changeOrderItemQuantity}
           removeFromOrder={removeFromOrder}
+          cleanOrder={cleanOrder}
         />
       </Router>
     </div>
